@@ -1,5 +1,3 @@
-
-
 import 'dart:ffi';
 
 import 'package:db_miner_app/screen/category_model/category_model.dart';
@@ -28,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-     controller.quotesGetData();
+    controller.quotesGetData();
     // controller.quotescategory();
   }
 
@@ -36,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Quotes"  ),
+        surfaceTintColor: Colors.black ,
+
+        title: Text("Quotes"),
         centerTitle: true,
         actions: [
           PopupMenuButton(
@@ -44,17 +44,18 @@ class _HomeScreenState extends State<HomeScreen> {
               return [
                 PopupMenuItem(
                   onTap: () {
-                    Get.toNamed('likec');
+                    Get.toNamed('dash');
                   },
                   child: Text("Like"),
                 ),
               ];
             },
           ),
-          Obx(() => Switch(
+          Obx(
+            () => Switch(
               value: controller.isLight.value,
               onChanged: (value) {
-                ShareHelper  shr=ShareHelper.shareHelper;
+                ShareHelper shr = ShareHelper.shareHelper;
                 shr.setTheme(value);
                 controller.changeTheme();
               },
@@ -64,21 +65,23 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Stack(
         children: [
-          Image.asset(
-          ("assets/image/p12.png"),
-            height: MediaQuery.sizeOf(context).height,
-            width: MediaQuery.sizeOf(context).width,
-            fit: BoxFit.cover,
-          ),
+          // Image.asset(
+          //   ("assets/image/p12.png"),
+          //   height: MediaQuery.sizeOf(context).height,
+          //   width: MediaQuery.sizeOf(context).width,
+          //   fit: BoxFit.cover,
+          // ),
           Column(
             children: [
               Expanded(
-                child: Obx(() =>ListView.builder(
+                child: Obx(
+                  () => ListView.builder(
                     itemCount: controller.list.length,
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          Get.toNamed('detail',arguments: controller.list[index]);
+                          Get.toNamed('detail',
+                              arguments: controller.list[index]);
                         },
                         child: Container(
                           margin: EdgeInsets.all(10),
@@ -90,22 +93,25 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.primaries[index].shade200),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "${controller.list[index].name }",
+                                "${controller.list[index].name}",
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20,fontFamily: "f6" ),
+                                    fontSize: 22,
+                                    fontFamily: "f6"),
                               ),
-                              IconButton(onPressed: () {
-                                categoryModel model=categoryModel(
-                                  name: controller.list[index].name
-                                );
-                                DBHelper.helper.insertcategory(model);
-                                controller.quotescategory();
-                              }, icon: Icon(Icons.favorite)),
+                              IconButton(
+                                  onPressed: () {
+                                    categoryModel model = categoryModel(
+                                        name: controller.list[index].name);
+                                    DBHelper.helper.insertcategory(model);
+                                    controller.quotescategory();
+                                    Get.snackbar("Favorite to quotes", "success");
+                                  },
+                                  icon: Icon(Icons.favorite)),
                             ],
                           ),
                         ),
@@ -117,8 +123,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ],
-
       ),
+
     );
   }
 }

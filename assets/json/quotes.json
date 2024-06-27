@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Love",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -42,6 +43,7 @@
   {
     "id": 2,
     "name": "Motivational",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -82,6 +84,7 @@
   {
     "id": 3,
     "name": "Art",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -122,6 +125,7 @@
   {
     "id": 4,
     "name": "Success",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -162,6 +166,7 @@
   {
     "id": 5,
     "name": "God",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -202,6 +207,7 @@
   {
     "id": 6,
     "name": "Truth",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -242,6 +248,7 @@
   {
     "id": 7,
     "name": "Romance",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -282,6 +289,7 @@
   {
     "id": 8,
     "name": "Life",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -322,6 +330,7 @@
   {
     "id": 9,
     "name": "Car",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",
@@ -362,6 +371,7 @@
   {
     "id": 10,
     "name": "Dad",
+    "images": "assets/image/r1.png",
     "image": [
       "assets/image/p2.png",
       "assets/image/p3.png",

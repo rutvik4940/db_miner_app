@@ -1,3 +1,5 @@
+import 'package:db_miner_app/screen/home/controller/home_controller.dart';
+import 'package:db_miner_app/screen/like_category/view/like_category_screen.dart';
 import 'package:db_miner_app/utils/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,21 +26,16 @@ class _LikeScreenState extends State<LikeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("like quotes"),
-        centerTitle: true,
-      ),
-      body: Obx(
-        () => Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
+      body: Column(
+        children: [
+          Obx(() =>Expanded(
+            child: ListView.builder(
                 itemCount: controller.likelist.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     leading: Text("${controller.likelist[index].id}"),
                     title: Text(
-                      "${controller.likelist[index].quotes}",
+                      "${controller.likelist[index].quotes }",
                       style: TextStyle(fontSize: 18, fontFamily: "f6"),
                     ),
                     subtitle: Text(
@@ -57,13 +54,13 @@ class _LikeScreenState extends State<LikeScreen> {
                                 controller.likeData();
                                 Get.back();
                               },
-                              child: const Text("Yes"),
+                              child: const Text("Yes",style: TextStyle(color: Colors.green ),),
                             ),
                             ElevatedButton(
                               onPressed: () {
                                 Get.back();
                               },
-                              child: const Text("No"),
+                              child: const Text("No",style: TextStyle(color: Colors.red ),),
                             ),
                           ],
                         );
@@ -73,9 +70,9 @@ class _LikeScreenState extends State<LikeScreen> {
                   );
                 },
               ),
-            ),
-          ],
-        ),
+          ),
+          ),
+        ],
       ),
     );
   }

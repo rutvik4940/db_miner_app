@@ -1,5 +1,8 @@
+import 'package:db_miner_app/screen/db_model/dp_model.dart';
 import 'package:db_miner_app/screen/home/controller/home_controller.dart';
 import 'package:db_miner_app/screen/home/model/home_model.dart';
+import 'package:db_miner_app/screen/like/controller/like_controller.dart';
+import 'package:db_miner_app/utils/db_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,38 +17,49 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   HomeModel model = Get.arguments;
-  HomeController controller=Get.put(HomeController());
+  HomeController controller = Get.put(HomeController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller.quotesGetData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.black,
         title: Text("${model.name}"),
         centerTitle: true,
       ),
       body: Stack(
         children: [
-          Image.asset(
-            ("assets/image/p12.png"),
-            height: MediaQuery.sizeOf(context).height,
-            width: MediaQuery.sizeOf(context).width,
-            fit: BoxFit.cover,
-          ),
+          // Image.asset(
+          //   ("assets/image/r1.png"),
+          //   height: MediaQuery.sizeOf(context).height,
+          //   width: MediaQuery.sizeOf(context).width,
+          //   fit: BoxFit.cover,
+          // ),
           Column(
             children: [
               Expanded(
                 child: ListView.builder(
-
                   itemCount: model.authorList!.length,
+                  scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        Get.toNamed('quotes', arguments: [
-                          model.authorList![index],
-                          model.quotesList![index],
-                          model.imageList![index],
-                          model.name
-                        ]);
+                        Get.toNamed(
+                          'quotes',
+                          arguments: [
+                            model.authorList![index],
+                            model.quotesList![index],
+                            model.imageList![index],
+                            model.name
+                          ],
+                        );
                       },
                       child: Container(
                         margin: const EdgeInsets.all(5),
@@ -74,11 +88,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 children: [
                                   Text(
                                     "${model.quotesList![index]}",
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                         overflow: TextOverflow.ellipsis,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20,fontFamily: "f6"),
+                                        fontSize: 25,
+                                        fontFamily: "f6"),
                                   ),
                                   const SizedBox(
                                     height: 5,

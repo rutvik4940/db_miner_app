@@ -15,7 +15,6 @@ class QuotesDetailsScreen extends StatefulWidget {
 class _QuotesDetailsScreenState extends State<QuotesDetailsScreen> {
   List l1 = Get.arguments;
   likeController controller = Get.put(likeController());
-  GlobalKey data1 = GlobalKey();
 
   @override
   void initState() {
@@ -33,8 +32,11 @@ class _QuotesDetailsScreenState extends State<QuotesDetailsScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              dbModel model =
-                  dbModel(quotes: l1[1], author: l1[0], name: l1[3],);
+              dbModel model = dbModel(
+                quotes: l1[1],
+                author: l1[0],
+                name: l1[3],
+              );
               DBHelper.helper.insertQuery(model);
               controller.likeData();
               Get.snackbar("Favorite to quotes", "success");
@@ -46,18 +48,19 @@ class _QuotesDetailsScreenState extends State<QuotesDetailsScreen> {
               return [
                 PopupMenuItem(
                   onTap: () {
-                    Get.toNamed('like');
-                  },
-                  child: Text("Like"),
-                ),
-                PopupMenuItem(
-                  onTap: () {
-                    Get.defaultDialog(title: 'set a wallpepar', actions: [
-                      ElevatedButton(
-                          onPressed: () async {}, child: Text("Home Screen")),
-                      ElevatedButton(
-                          onPressed: () async {}, child: Text("Lock Screen ")),
-                    ]);
+                    Get.defaultDialog(
+                      title: 'set a wallpepar',
+                      actions: [
+                        ElevatedButton(
+                          onPressed: () async {},
+                          child: Text("Home Screen"),
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {},
+                          child: Text("Lock Screen "),
+                        ),
+                      ],
+                    );
                   },
                   child: Text("set a wallpepar "),
                 ),
@@ -85,8 +88,9 @@ class _QuotesDetailsScreenState extends State<QuotesDetailsScreen> {
                     TypewriterAnimatedText(
                       '${l1[1]}',
                       textStyle: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 25,
                           fontWeight: FontWeight.bold,
+                          color: Colors.black ,
                           fontFamily: "f6"),
                     ),
                   ],
@@ -100,6 +104,7 @@ class _QuotesDetailsScreenState extends State<QuotesDetailsScreen> {
                         '- ${l1[0]}',
                         textStyle: const TextStyle(
                             fontSize: 18,
+                            color: Colors.black ,
                             fontWeight: FontWeight.bold,
                             fontFamily: "f6"),
                       ),
